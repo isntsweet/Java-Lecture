@@ -1,12 +1,14 @@
 package ch17_stream;
 
-public class Ex07_Student {
+public class Ex14_Student {
 	private String name;
+	private String gender;
 	private int score;
 
-	Ex07_Student(String name, int score) {
+	Ex14_Student(String name, String gender, int score) {
 		super();
 		this.name = name;
+		this.gender = gender;
 		this.score = score;
 	}
 
@@ -14,7 +16,12 @@ public class Ex07_Student {
 		return name;
 	}
 
+	public String getGender() {
+		return gender;
+	}
+
 	public int getScore() {
 		return score;
 	}
+
 }
