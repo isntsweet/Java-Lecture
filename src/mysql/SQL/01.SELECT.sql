@@ -42,6 +42,10 @@ SELECT DISTINCT District FROM city 		# distinct - 고유한
 SELECT * FROM city
 	WHERE District='Seoul' 
 	OR District='Inchon' OR District='Kyonggi';
+#수도권
+SELECT * FROM city
+WHERE District IN ('Seoul', 'Inchen', 'Kyonggi');
+
 
 # 국내의 인구수 100만 이상인 도시중 인구수가 홀수인 도시
 SELECT * FROM city
@@ -207,3 +211,21 @@ SELECT l.Name AS `Country`, r.`Language` FROM country AS l
 	ON l.Code = r.CountryCode
 	WHERE l.Continent = 'Asia'
 	AND r.IsOfficial = TRUE;
+
+# 전 세계에서 인구수가 가장 많은 10개 도시에서 사용하는 공식 언어는?
+# (도시명, 인구수, 언어명)
+
+USE world;
+SELECT l.Name AS `city`, l.Population, r.`Language` 
+	FROM city AS l
+	JOIN countrylanguage AS r
+	ON l.CountryCode = r.CountryCode
+	WHERE r.IsOfficial = TRUE 
+	ORDER BY l.Population DESC 
+	LIMIT 10;
+
+#서울보다 인구수가 많은 도시
+SELECT * FROM city
+WHERE population > 
+(select population from city WHERE NAME='Seoul');
+
