@@ -90,3 +90,40 @@ UPDATE largeCity SET Population=8900000 WHERE ID=2331;
 
 # city 테이블에서 변경하면 largeCity에도 반영이 됨
 UPDATE city SET Population=9900000 WHERE ID=2331;
+
+/*DB 과제
+1. 좋아하는 프로야구 구단의 선수를 등록하려고 한다.
+2. 등록하려는 정보는
+선수명, 백넘버, 포지션, 생년월일, 키(height)
+3. primary key는 백넘버로 한다.
+4. 각 포지션(투수, 포수, 내야수, 외야수) 별로 3명 이상의
+선수를 등록한다.
+
+
+선수 목록, 선수 등록, 선수정보 수정, 선수 방출을 할 수 있도록
+DTO, DAO, App을 만들어 보세요. */
+
+CREATE TABLE if NOT EXISTS baseball (
+	`name` VARCHAR(8) NOT NULL,
+	backnumber int PRIMARY KEY,
+	`position` VARCHAR(4) NOT NULL,
+	birthday DATE,
+	height INT,
+	isDeleted int DEFAULT 0
+);
+SELECT * FROM baseball;
+
+INSERT INTO baseball (`name`, backnumber, `POSITION`, birthday, height, isDeleted) 
+	VALUES ('강매성', '95','투수','2003-06-08','187', 0),
+	('고효준','65', '투수','1983-02-08','179', 0),
+	('김건우','59','투수','2002-07-12','185', 0),
+	('김민식', '21','포수','1989-06-28','180', 0),
+	('김태우','100', '포수','1995-02-20','175', 0),
+	('박제범','40','포수','2001-03-12','172', 0),
+	('고영준', '6','내야수','2002-07-08','185', 0),
+	('김성현','16', '내야수','1987-03-09','172', 0),
+	('김성민','116','내야수','2001-04-30','184', 0),
+	('김규남','28','외야수','1995-05-12','183', 0),
+	('김민재','49','외야수','1996-04-04','191', 0),
+	('라가레스','27','외야수','1989-03-17','187', 0);
+SELECT * FROM baseball;

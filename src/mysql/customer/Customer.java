@@ -2,6 +2,9 @@ package mysql.customer;
 
 import java.time.LocalDate;
 
+/**
+ * DTO(Data Transfer Object)
+ */
 public class Customer {
 	private String uid;
 	private String name;
@@ -11,12 +14,21 @@ public class Customer {
 	Customer() {
 	}
 
+	Customer(String uid, String name) {
+		this.uid = uid;
+		this.name = name;
+	}
+
 	Customer(String uid, String name, LocalDate regDate, int isDeleted) {
-		super();
 		this.uid = uid;
 		this.name = name;
 		this.regDate = regDate;
 		this.isDeleted = isDeleted;
+	}
+
+	@Override
+	public String toString() {
+		return "Customer [" + uid + ", " + name + ", " + regDate + ", " + isDeleted + "]";
 	}
 
 	public String getUid() {
@@ -50,10 +62,4 @@ public class Customer {
 	public void setIsDeleted(int isDeleted) {
 		this.isDeleted = isDeleted;
 	}
-
-	@Override
-	public String toString() {
-		return "Customer [" + uid + ", " + name + ", " + regDate + ", " + isDeleted + "]";
-	}
-
 }

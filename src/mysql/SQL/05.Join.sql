@@ -89,3 +89,16 @@ SELECT `name`, debut, title FROM girlgroup AS l
 	ON l.hitsongId = r.sid 
 	WHERE debut LIKE '2009%';
 
+
+
+# New Jeans의 히트곡명은
+SELECT r.gname, l.sname FROM hitsong AS l
+	JOIN girlgroup AS r
+	ON l.gid=r.gid
+	WHERE r.gname = 'New Jeans';
+
+# 2018년도 데뷔 걸그룹의 히트곡은? (걸그룹명, 곡명, 데뷔일)
+SELECT l.gname, r.sname, l.debut FROM girlgroup AS l
+	JOIN hitsong AS r
+	ON l.gid=r.gid
+	WHERE l.debut LIKE '2018%';
