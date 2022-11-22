@@ -102,3 +102,10 @@ SELECT l.gname, r.sname, l.debut FROM girlgroup AS l
 	JOIN hitsong AS r
 	ON l.gid=r.gid
 	WHERE l.debut LIKE '2018%';
+
+
+##
+
+SELECT b.bid, b.btitle, u.uname, b.modTime, b.viewCount, b.replyCount FROM board AS b 
+	JOIN users AS u ON b.uid=u.uid
+	LIMIT 10 OFFSET 0;
